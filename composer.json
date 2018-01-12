@@ -28,15 +28,13 @@
       "Frontuser\\Integration\\": "app/code/frontuser/m2-integration/"
     }
   },
+  "config": {
+        "vendor-dir": "lib/vendor"
+    },
   "repositories": {
     "frontuser": {
         "type": "vcs",
         "url": "https://github.com/frontuser/"
     }
-  },
-  "extra": {
-        "installer-paths": {
-            "app/code/{$name}": ["frontuser/m2-integration"]
-        }
-    }
+  }
 }
