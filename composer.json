@@ -25,7 +25,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Frontuser\\Integration\\": "app/code/Frontuser/Integration/"
+      "Frontuser\\Integration\\": "app/code/frontuser/m2-integration/"
     }
   },
   "repositories": {
@@ -33,5 +33,10 @@
         "type": "vcs",
         "url": "https://github.com/frontuser/"
     }
-  }
+  },
+  "extra": {
+        "installer-paths": {
+            "app/code/{$name}": ["frontuser/m2-integration"]
+        }
+    }
 }
