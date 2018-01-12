@@ -1,0 +1,65 @@
+<?php
+/**
+ * Frontuser Integration
+ * Copyright © 2017 Frontuser. All rights reserved.
+ *
+ * @category    Frontuser
+ * @package     Frontuser_Integration
+ * @author      Frontuser Team <support@frontuser.com>
+ * @copyright   Frontuser (https://frontuser.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+\Magento\Framework\Profiler::start('FRONTUSER');
+
+if($this->isEnable()) {
+
+    $matrix_data = array();
+    if($this->isMatrixEnable()) {
+
+        $name = $this->getPageTitle();
+
+        $matrix_data['page'] = array(
+            'name' => $name,
+            'type' => $this->getType(),
+            'url'  => $this->getUrl( '*/*/*', [ '_current' => true, '_use_rewrite' => true ] )
+        );
+
+        $matrix_data = $this->getMatrixData($matrix_data);
+    }
+    ?>
+
+    <script type="text/javascript">
+        (function(p,u,s,h) {
+            var t='<?php echo $this->getWebHash(); ?>';
+            p._fq=p._fq||[];
+            p._fq.push(['_currentTime',Date.now()]);
+            s=u.createElement('script');
+            s.type='text/javascript';
+            s.async=true;
+            var m = new Date().getTime();
+            s.src='https://cdn.frontuser.com/sdk/1.0/fuser-'+t+'.js?'+m,
+                h=u.getElementsByTagName('script')[0];
+            h.parentNode.insertBefore(s,h);
+        })(window,document);
+
+        <?php if($this->isMatrixEnable()) { ?>
+            window.fu_matrix = <?php echo $matrix_data; ?>;
+        <?php } ?>
+
+        <?php if($this->isSuccess()) { ?>
+            var TrackRevenue = function() {
+                return {
+                    amount: '<?php echo $this->getRevenue(); ?>',
+                    currency: '<?php echo $this->getCurrency(); ?>'
+                };
+            };
+        <?php } ?>
+    </script>
+
+<?php
+
+}
+\Magento\Framework\Profiler::stop('FRONTUSER');
+
+?>

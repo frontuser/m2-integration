@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Frontuser Integration
+ * Copyright © 2017 Frontuser. All rights reserved.
+ *
+ * @category    Frontuser
+ * @package     Frontuser_Integration
+ * @author      Frontuser Team <support@frontuser.com>
+ * @copyright   Frontuser (https://frontuser.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="frontuser_tab" translate="label" sortOrder="1000">
+            <label>Frontuser</label>
+        </tab>
+        <section id="frontuser_section" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Settings</label>
+            <tab>frontuser_tab</tab>
+            <resource>Frontuser_Integration::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Frontuser Settings</label>
+                <field id="frontuser_enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable/Disable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="frontuser_webhash" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Website Hash:</label>
+                </field>
+                <field id="frontuser_matrix" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Matrix Variable Feature</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="matrixdata" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Matrix Data</label>
+                <field id="matrixdata_product" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Product Data</label>
+                    <frontend_model>Frontuser\Integration\Block\Adminhtml\Productmap</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>
+                        <![CDATA[Add the magento to frontuser mapping]]>
+                    </comment>
+                    <tooltip>Map the magento product fields to matrix data fields</tooltip>
+                </field>
+                <field id="matrixdata_user" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>User Data</label>
+                    <frontend_model>Frontuser\Integration\Block\Adminhtml\Customermap</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>
+                        <![CDATA[Add the magento to frontuser mapping]]>
+                    </comment>
+                    <tooltip>Map the magento user fields to matrix data fields</tooltip>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

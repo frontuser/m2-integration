@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Frontuser Integration
+ * Copyright © 2017 Frontuser. All rights reserved.
+ *
+ * @category    Frontuser
+ * @package     Frontuser_Integration
+ * @author      Frontuser Team <support@frontuser.com>
+ * @copyright   Frontuser (https://frontuser.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Frontuser_Integration::config" title="Frontuser" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
