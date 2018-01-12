@@ -29,7 +29,7 @@
     }
   },
   "config": {
-        "vendor-dir": "lib/vendor"
+        "vendor-dir": "app/code/"
     },
   "repositories": {
     "frontuser": {
